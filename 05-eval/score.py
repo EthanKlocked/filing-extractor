@@ -117,27 +117,30 @@ def score_file(path: Path):
     }
 
 
+TAGS = [("base", "base"), ("tuned", "tuned(cloud)"), ("local_q4", "local Q4")]
+
+
 def main():
     results = {}
-    for tag in ("base", "tuned"):
+    for tag, _ in TAGS:
         p = DATA / f"preds_{tag}.jsonl"
         if p.exists():
             results[tag] = score_file(p)
 
     if not results:
-        print("preds_*.jsonl 없음 — 먼저 predict.py 실행"); return
+        print("preds_*.jsonl 없음 — 먼저 predict.py / bench.py 실행"); return
 
-    print("=" * 60)
-    print(f"{'지표':<22}{'base':>12}{'tuned':>12}")
-    print("-" * 60)
+    cols = [(t, lbl) for t, lbl in TAGS if t in results]
+    width = 60 + max(0, (len(cols) - 2)) * 14
+    print("=" * width)
+    print(f"{'지표':<22}" + "".join(f"{lbl:>14}" for _, lbl in cols))
+    print("-" * width)
     keys = [("json_valid_pct", "JSON valid %"), ("field_acc_pct", "필드 정확도 %"),
             ("null_acc_pct", "null 정확도 %"), ("avg_latency_s", "평균 지연(s)")]
     for k, label in keys:
-        row = f"{label:<22}"
-        for tag in ("base", "tuned"):
-            row += f"{results[tag][k]:>12.2f}" if tag in results else f"{'-':>12}"
+        row = f"{label:<22}" + "".join(f"{results[t][k]:>14.2f}" for t, _ in cols)
         print(row)
-    print("=" * 60)
+    print("=" * width)
 
     if "base" in results and "tuned" in results:
         d = results["tuned"]["field_acc_pct"] - results["base"]["field_acc_pct"]

@@ -20,3 +20,6 @@ wandb/
 
 # os
 .DS_Store
+
+# 04 serving 파생물 (대용량, 재생성 가능)
+04-serving/merged/

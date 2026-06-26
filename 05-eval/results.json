@@ -144,5 +144,78 @@
         20
       ]
     }
+  },
+  "local_q4": {
+    "n": 47,
+    "json_valid_pct": 89.36170212765957,
+    "field_acc_pct": 58.39080459770115,
+    "null_acc_pct": 82.96529968454259,
+    "avg_latency_s": 20.95221276595744,
+    "per_field": {
+      "meta.ticker": [
+        0,
+        32
+      ],
+      "meta.filingType": [
+        42,
+        47
+      ],
+      "meta.market": [
+        42,
+        47
+      ],
+      "meta.periodEnd": [
+        41,
+        47
+      ],
+      "meta.currency": [
+        15,
+        47
+      ],
+      "revenue.valueReported": [
+        30,
+        47
+      ],
+      "revenue.yoyGrowth": [
+        26,
+        47
+      ],
+      "revenue.qoqGrowth": [
+        0,
+        0
+      ],
+      "profitability.gaapNetIncome": [
+        18,
+        33
+      ],
+      "profitability.isProfitable": [
+        28,
+        33
+      ],
+      "profitability.grossMarginTrend": [
+        0,
+        18
+      ],
+      "profitability.epsDiluted": [
+        9,
+        12
+      ],
+      "profitability.epsAcceleration": [
+        0,
+        2
+      ],
+      "accounting.auditOpinion": [
+        0,
+        2
+      ],
+      "accounting.restatementMentioned": [
+        0,
+        1
+      ],
+      "accounting.goingConcernDoubt": [
+        3,
+        20
+      ]
+    }
   }
 }
