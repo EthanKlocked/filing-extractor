@@ -23,3 +23,6 @@ wandb/
 
 # 04 serving 파생물 (대용량, 재생성 가능)
 04-serving/merged/
+
+# 개인 커리어 문서 (공개 레포 제외)
+CAREER-WRITEUP.md
