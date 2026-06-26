@@ -56,8 +56,8 @@ def main():
     if tok.pad_token is None:
         tok.pad_token = tok.eos_token
     model = AutoModelForCausalLM.from_pretrained(
-        a.model, quantization_config=bnb, torch_dtype=torch.bfloat16, device_map="auto",
-    )
+        a.model, quantization_config=bnb, dtype=torch.bfloat16, device_map="auto",
+    )  # transformers 5.x: torch_dtype 폐기 → dtype (안 맞으면 bf16 미적용 → NaN)
     model = prepare_model_for_kbit_training(model, use_gradient_checkpointing=True)
 
     lora = LoraConfig(
@@ -83,6 +83,8 @@ def main():
         gradient_accumulation_steps=a.grad_accum,
         learning_rate=a.lr,
         bf16=True,
+        max_grad_norm=1.0,                # 기울기 클리핑 (폭발 방지)
+        optim="paged_adamw_8bit",         # QLoRA 표준 옵티마이저 (안정 + 메모리↓)
         max_length=a.max_len,
         packing=False,
         completion_only_loss=True,        # prompt(system+user) 마스킹, completion(JSON)에만 loss
