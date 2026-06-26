@@ -1,0 +1,148 @@
+{
+  "base": {
+    "n": 47,
+    "json_valid_pct": 6.382978723404255,
+    "field_acc_pct": 1.839080459770115,
+    "null_acc_pct": 100.0,
+    "avg_latency_s": 21.97308510638297,
+    "per_field": {
+      "meta.ticker": [
+        0,
+        32
+      ],
+      "meta.filingType": [
+        2,
+        47
+      ],
+      "meta.market": [
+        4,
+        47
+      ],
+      "meta.periodEnd": [
+        2,
+        47
+      ],
+      "meta.currency": [
+        0,
+        47
+      ],
+      "revenue.valueReported": [
+        0,
+        47
+      ],
+      "revenue.yoyGrowth": [
+        0,
+        47
+      ],
+      "revenue.qoqGrowth": [
+        0,
+        0
+      ],
+      "profitability.gaapNetIncome": [
+        0,
+        33
+      ],
+      "profitability.isProfitable": [
+        0,
+        33
+      ],
+      "profitability.grossMarginTrend": [
+        0,
+        18
+      ],
+      "profitability.epsDiluted": [
+        0,
+        12
+      ],
+      "profitability.epsAcceleration": [
+        0,
+        2
+      ],
+      "accounting.auditOpinion": [
+        0,
+        2
+      ],
+      "accounting.restatementMentioned": [
+        0,
+        1
+      ],
+      "accounting.goingConcernDoubt": [
+        0,
+        20
+      ]
+    }
+  },
+  "tuned": {
+    "n": 47,
+    "json_valid_pct": 87.23404255319149,
+    "field_acc_pct": 68.96551724137932,
+    "null_acc_pct": 78.86435331230284,
+    "avg_latency_s": 23.873000000000005,
+    "per_field": {
+      "meta.ticker": [
+        26,
+        32
+      ],
+      "meta.filingType": [
+        41,
+        47
+      ],
+      "meta.market": [
+        41,
+        47
+      ],
+      "meta.periodEnd": [
+        38,
+        47
+      ],
+      "meta.currency": [
+        37,
+        47
+      ],
+      "revenue.valueReported": [
+        34,
+        47
+      ],
+      "revenue.yoyGrowth": [
+        25,
+        47
+      ],
+      "revenue.qoqGrowth": [
+        0,
+        0
+      ],
+      "profitability.gaapNetIncome": [
+        20,
+        33
+      ],
+      "profitability.isProfitable": [
+        25,
+        33
+      ],
+      "profitability.grossMarginTrend": [
+        5,
+        18
+      ],
+      "profitability.epsDiluted": [
+        8,
+        12
+      ],
+      "profitability.epsAcceleration": [
+        0,
+        2
+      ],
+      "accounting.auditOpinion": [
+        0,
+        2
+      ],
+      "accounting.restatementMentioned": [
+        0,
+        1
+      ],
+      "accounting.goingConcernDoubt": [
+        0,
+        20
+      ]
+    }
+  }
+}

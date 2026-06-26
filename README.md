@@ -48,4 +48,10 @@ frontier를 **대체**하는 게 아니라 앞단 **triage/추출 레이어**다
 
 ## 상태
 
-🚧 진행 중 — 현재: 태스크 설계(추출 스키마 확정) 단계.
+🚧 진행 중. **핵심 결과 (v1):** 베이스 Qwen2.5-3B는 공시 구조화 추출을 거의 못 함
+(JSON valid 6%, 필드정확도 2%). 362-예제 distillation + **QLoRA SFT로 valid 87% /
+필드정확도 69% (+67%p)** 달성 — 자세히는 [05-eval/RESULTS.md](05-eval/RESULTS.md).
+
+- [x] 01~03: 데이터(456 distill 라벨) → QLoRA SFT (Runpod RTX4090, ~$1.5)
+- [x] 05: 베이스 vs 튠 정량 평가
+- [ ] 04 서빙(llama.cpp/양자화) · 08 스키마 제약 디코딩 · 09 MCP화 + 투자비서 dogfooding
