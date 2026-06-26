@@ -20,6 +20,10 @@ from transformers import AutoModelForCausalLM, AutoTokenizer, BitsAndBytesConfig
 from peft import LoraConfig, prepare_model_for_kbit_training
 from trl import SFTConfig, SFTTrainer
 
+# 데이터는 prompt/completion 포맷(format_sft.py) → completion_only_loss=True가
+# prompt(system+user)를 자동 마스킹, completion(JSON)에만 loss.
+# (TRL 1.7은 DataCollatorForCompletionOnlyLM 제거 / Qwen 템플릿은 generation 마커 없음)
+
 
 def parse():
     p = argparse.ArgumentParser()
@@ -81,7 +85,7 @@ def main():
         bf16=True,
         max_length=a.max_len,
         packing=False,
-        assistant_only_loss=True,         # assistant(JSON)에만 loss
+        completion_only_loss=True,        # prompt(system+user) 마스킹, completion(JSON)에만 loss
         logging_steps=5,
         eval_strategy="steps", eval_steps=50,
         save_strategy="epoch",

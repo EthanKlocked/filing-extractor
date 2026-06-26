@@ -19,15 +19,18 @@ DATA = ROOT / "data"
 MAX_CHARS = 32000
 
 
-def to_messages(rec: dict) -> dict:
+def to_example(rec: dict) -> dict:
+    """TRL prompt/completion 포맷 — completion_only_loss=True가 prompt를 자동 마스킹."""
     user = rec["input_text"]
     if len(user) > MAX_CHARS:
         user = user[:MAX_CHARS]  # 앞부분 유지(손익계산서·매출은 보통 상단)
     completion = json.dumps(rec["output"], ensure_ascii=False)
     return {
-        "messages": [
+        "prompt": [
             {"role": "system", "content": EXTRACTION_SYSTEM},
             {"role": "user", "content": user},
+        ],
+        "completion": [
             {"role": "assistant", "content": completion},
         ],
         # 메타(학습엔 안 쓰지만 추적용)
@@ -48,7 +51,7 @@ def main():
                 rec = json.loads(line)
                 if len(rec["input_text"]) > MAX_CHARS:
                     trunc += 1
-                out.write(json.dumps(to_messages(rec), ensure_ascii=False) + "\n")
+                out.write(json.dumps(to_example(rec), ensure_ascii=False) + "\n")
                 n += 1
         print(f"sft_{split}.jsonl: {n} examples ({trunc} truncated to {MAX_CHARS}자)")
 
