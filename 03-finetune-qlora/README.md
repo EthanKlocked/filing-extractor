@@ -28,9 +28,9 @@ python train.py              # 본 학습 → outputs/adapter/
 
 ## 핵심 설정 (train.py)
 - 4-bit nf4 + double quant, bf16 compute / LoRA r=16 α=32, attn+mlp 전체 타깃
-- `assistant_only_loss=True` — JSON 출력에만 loss
-- `max_len=8192` — 긴 재무제표 청크 수용(메모리와 trade-off; 초과분 앞부분 유지)
+- `completion_only_loss=True` — prompt(공시) 마스킹, JSON 출력에만 loss
+- `max_len=8192` — 입력(공시)을 토큰단위로 잘라 정답 JSON은 항상 보존 (format_sft)
 
-## 검증 포인트 (이력서 라인)
+## 검증 포인트
 베이스(Qwen2.5-3B-Instruct, 튠 전) vs 튠 후를 **05 평가**에서 정량 비교 →
 JSON valid% · 필드 정확도 개선폭으로 "QLoRA SFT 효과"를 수치로 입증.

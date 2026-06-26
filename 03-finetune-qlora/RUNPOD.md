@@ -41,7 +41,7 @@ python train.py            # max_len=8192, epochs=3, QLoRA r=16
 > 끊김 대비: `tmux` 안에서 실행 권장 (`tmux new -s train` → 실행 → `Ctrl+b d`로 detach).
 
 ## 6. 어댑터 회수 (둘 중 하나) — pod 끄기 전 필수
-**(a) HF Hub 업로드 (추천 — 포트폴리오+백업)**
+**(a) HF Hub 업로드 (백업·공유)**
 ```bash
 pip install -U huggingface_hub
 huggingface-cli login        # write 토큰 입력
@@ -56,7 +56,7 @@ scp -r -P <port> root@<pod-ip>:/workspace/filing-extractor/03-finetune-qlora/out
 ## 7. Pod 종료 (과금 정지)
 - Runpod 콘솔에서 **Terminate** (Stop 아님 — Stop은 디스크 과금 계속됨)
 
-## 검증 포인트 (이력서/평가 연결)
+## 검증 포인트
 - 학습 중 train/eval loss 곡선 → 수렴 확인
 - 베이스(튠 전) vs 어댑터(튠 후)는 **05 평가**에서 JSON valid%·필드정확도로 정량 비교
 - 이 런북 자체 = GPU 인스턴스 프로비저닝·환경·비용관리 운영 경험 문서
