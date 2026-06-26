@@ -1,0 +1,27 @@
+# 맥 로컬(M4, MPS) 단계용 코어 스택. Python 3.12.
+# QLoRA(bitsandbytes)·vLLM 등 CUDA 전용은 여기 없음 — 클라우드 GPU 환경에서 별도 설치.
+
+# --- DL 코어 (01 기본기, 03 학습 코드 작성/검증) ---
+torch                 # macOS 휠 = MPS 백엔드 포함
+transformers
+datasets
+accelerate
+huggingface_hub
+
+# --- 데이터/스키마 (00 설계, 02 데이터셋) ---
+pydantic>=2
+sec-edgar-downloader  # SEC EDGAR 공시 수집 (공개 데이터)
+beautifulsoup4
+lxml
+tiktoken              # 토큰 길이 측정/청킹
+
+# --- frontier 라벨링 (02 distillation teacher 호출) ---
+anthropic
+
+# --- 노트북/유틸 ---
+jupyter
+ipykernel
+matplotlib           # loss curve 등 시각화
+tqdm
+python-dotenv
+google-genai

@@ -1,0 +1,20 @@
+# env / secrets
+.venv/
+.env
+*.key
+
+# python
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+
+# data & model artifacts (대용량 / 일부 비공개)
+data/raw/
+data/private/
+*.safetensors
+*.gguf
+checkpoints/
+wandb/
+
+# os
+.DS_Store

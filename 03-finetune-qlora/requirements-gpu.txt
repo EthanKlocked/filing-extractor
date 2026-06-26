@@ -1,0 +1,9 @@
+# 클라우드 GPU(CUDA) 학습 환경. 맥 아님. Runpod/Colab Linux+NVIDIA에서 설치.
+# torch는 보통 GPU 이미지에 기설치 → 충돌 시 이미지 버전 사용.
+torch
+transformers>=4.46
+datasets
+accelerate
+peft>=0.13
+trl>=0.12
+bitsandbytes>=0.44
